@@ -1,0 +1,11 @@
+java模拟浏览器包htmlunit，selenium
+发现一个很不错的模拟浏览器包htmlunit，它可以直接执行访问网站地址，并执行相应的JavaScript脚本；这个功能对于网站爬虫有很大的帮助，一些网站使用了ajax，如果使用简单的http访问只能抓到原始的html源码，但对于页面内执行的ajax却无法获取；使用这个包后，可以将执行ajax后的html源码一并抓取下来。
+网站地址：http://htmlunit.sourceforge.net/
+该站点下边还提到了几个相类似的包：HtmlUnit is used as the underlying "browser" by different Open Source tools like Canoo WebTest, JWebUnit, WebDriver, JSFUnit, Celerity, ... 
+
+
+canoo WebTest 看了一下，没太明白是怎么用的，没想太深入了解
+jwebunit 是用来做网站测试用的，它整合了JUnit，htmlunit，selenium 包框架；其主要功能是用做白盒测试和压力测试。
+webDriver 后来改名为selenium，它整合了htmlunit，火狐浏览器，IE浏览器，opare浏览器驱动。如果使用htmlunitDriver，则是使用htmlunit包来访问站点；如果使用FirefoxDriver则会直接将Firefox浏览器调出来，然后在浏览器上模拟输入文字和其他鼠标键盘事件。
+
+htmlunit包访问网站后，获取到html源码后可以对源码进行修改；而jwebunit，selenium则暂时没有发现修改的功能，只是用来做模拟用户操作的功能。

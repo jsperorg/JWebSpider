@@ -1,0 +1,25 @@
+采集器开发步骤
+
+一、先想好功能，初略统计出要几个window界面。
+
+二、用swing画好界面
+
+三、实现表单各数据的获取并测试输出到控制台
+
+四、实现参数与spider的结合，用spider采集数据。
+
+五、尝试发布内容到网站。
+
+评论区内容开始特征 txa_CommentContentAreaStart
+评论区类容结束特征 txa_CommentContentAreaEnd
+评论者ID开始特征 txa_CommentAuthorIdStart
+评论者ID结束特征 txa_CommentAuthorIdEnd
+评论时间开始特征 txa_CommentTimeStart
+评论时间结束特征 txa_CommentTimeEnd
+评论内容开始特征 txa_CommentContentStart
+评论内容结束特征 txa_CommentContentEnd
+
+
+
+
+

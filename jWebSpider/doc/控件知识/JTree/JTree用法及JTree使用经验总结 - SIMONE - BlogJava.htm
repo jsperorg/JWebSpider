@@ -1,0 +1,1399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0065)http://www.blogjava.net/wangxinsh55/archive/2006/04/04/39219.html -->
+<html><head id="Head"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+	JTree用法及JTree使用经验总结 - SIMONE - BlogJava
+</title><meta id="metaKeywords" name="keywords" content="JTree用法及JTree使用经验总结"><link type="text/css" rel="stylesheet" href="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/common.css"><link id="MainCss" type="text/css" rel="stylesheet" href="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/style.css"><link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="http://www.blogjava.net/wangxinsh55/rss.aspx"><script type="text/javascript" async="" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/ga.js"></script><script type="text/javascript" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/osd.js"></script></head>
+<body>
+    <form name="Form1" method="post" action="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/JTree用法及JTree使用经验总结 - SIMONE - BlogJava.htm" onsubmit="javascript:return WebForm_OnSubmit();" id="Form1">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="
+__VIEWSTATE" value="">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/WebResource.axd" type="text/javascript"></script>
+
+<script language="JavaScript">
+									function ctlent(evt,id)
+											{
+												if(evt.ctrlKey && evt.keyCode == 13)
+												{	
+													try
+													{
+														TempSave(id);
+													}
+													catch(ex)
+													{
+													}
+													finally
+													{
+													    __doPostBack('AjaxHolder$PostComment$btnSubmit','')
+													}
+												}
+		
+												}</script>
+												<script language="JavaScript">function SetReplyAuhor(author){document.getElementById('AjaxHolder_PostComment_tbComment').value+="@"+author+"\n";document.getElementById('AjaxHolder_PostComment_tbComment').focus();return false}</script>
+<script src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/ScriptResource.axd" type="text/javascript"></script>
+<script src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/ScriptResource(1).axd" type="text/javascript"></script>
+<script src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/ScriptResource(2).axd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+        
+<!--done-->
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+<tbody><tr>
+	<td width="184" background="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/banner1.gif"></td>
+	<td background="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/banner.gif">
+<!--done-->
+<div class="header">
+	<div class="headerText">
+		<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.blogjava.net/wangxinsh55/">SIMONE</a><br>
+		<span style="font-size:12px;color:#4371A6;padding-left:20;"></span>
+	</div>
+</div>
+</td>
+	<td width="295" background="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/banner2.gif"></td>
+</tr>
+</tbody></table>
+<div id="mylinks">
+<!--done-->
+<a id="MyLinks1_HomeLink" class="menu" href="http://www.blogjava.net/">BlogJava</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_MyHomeLink" class="mainmenu" href="http://www.blogjava.net/wangxinsh55/">首页</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_NewPostLink" class="mainmenu" href="http://www.blogjava.net/wangxinsh55/admin/EditPosts.aspx?opt=1">新随笔</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_NewArticleLink" class="mainmenu" href="http://www.blogjava.net/EnterMyBlog.aspx?NewArticle=1">新文章</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_ContactLink" accesskey="9" class="mainmenu" href="http://www.blogjava.net/wangxinsh55/contact.aspx?id=1">联系</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_Syndication" class="mainmenu" href="http://www.blogjava.net/wangxinsh55/rss">聚合</a><a id="MyLinks1_XMLLink" href="http://www.blogjava.net/wangxinsh55/rss"><img src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml.gif" style="border-width:0px;"></a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_Admin" class="menu" href="http://www.blogjava.net/wangxinsh55/admin/EditPosts.aspx">管理</a>
+</div>
+<div id="mytopmenu">
+	
+		<div id="mystats">
+			
+<!--done-->
+<div class="blogStats">
+posts - 376,comments - 129,trackbacks - 0
+
+</div></div>
+	
+</div>
+<div id="leftcontent" style="display: inline; ">
+	
+		<div id="leftcontentcontainer">
+			<table id="Calendar1_entryCal" class="Cal" cellspacing="0" cellpadding="0" title="Calendar" border="0" style="border-width:1px;border-style:solid;border-collapse:collapse;border:0px">
+	<tbody><tr><td colspan="7" style="background-color:Transparent;"><table class="CalTitle" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">
+		<tbody><tr><td class="CalNextPrev" style="width:15%;"><a href="javascript:__doPostBack('Calendar1$entryCal','V2251')" style="color:Black" title="Go to the previous month">&lt;</a></td><td align="center" style="width:70%;">2006年4月</td><td class="CalNextPrev" align="right" style="width:15%;"><a href="javascript:__doPostBack('Calendar1$entryCal','V2312')" style="color:Black" title="Go to the next month">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center" style="width:14%;">26</td><td class="CalOtherMonthDay" align="center" style="width:14%;">27</td><td class="CalOtherMonthDay" align="center" style="width:14%;">28</td><td class="CalOtherMonthDay" align="center" style="width:14%;">29</td><td class="CalOtherMonthDay" align="center" style="width:14%;">30</td><td class="CalOtherMonthDay" align="center" style="width:14%;">31</td><td class="CalWeekendDay" align="center" style="width:14%;"><a href="http://www.blogjava.net/wangxinsh55/archive/2006/04/01.html"><u>1</u></a></td></tr><tr><td class="CalWeekendDay" align="center" style="width:14%;"><a href="http://www.blogjava.net/wangxinsh55/archive/2006/04/02.html"><u>2</u></a></td><td align="center" style="width:14%;"><a href="http://www.blogjava.net/wangxinsh55/archive/2006/04/03.html"><u>3</u></a></td><td align="center" style="width:14%;"><a href="http://www.blogjava.net/wangxinsh55/archive/2006/04/04.html"><u>4</u></a></td><td align="center" style="width:14%;"><a href="http://www.blogjava.net/wangxinsh55/archive/2006/04/05.html"><u>5</u></a></td><td align="center" style="width:14%;"><a href="http://www.blogjava.net/wangxinsh55/archive/2006/04/06.html"><u>6</u></a></td><td align="center" style="width:14%;"><a href="http://www.blogjava.net/wangxinsh55/archive/2006/04/07.html"><u>7</u></a></td><td class="CalWeekendDay" align="center" style="width:14%;">8</td></tr><tr><td class="CalWeekendDay" align="center" style="width:14%;">9</td><td align="center" style="width:14%;"><a href="http://www.blogjava.net/wangxinsh55/archive/2006/04/10.html"><u>10</u></a></td><td align="center" style="width:14%;">11</td><td align="center" style="width:14%;"><a href="http://www.blogjava.net/wangxinsh55/archive/2006/04/12.html"><u>12</u></a></td><td align="center" style="width:14%;">13</td><td align="center" style="width:14%;">14</td><td class="CalWeekendDay" align="center" style="width:14%;">15</td></tr><tr><td class="CalWeekendDay" align="center" style="width:14%;">16</td><td align="center" style="width:14%;">17</td><td align="center" style="width:14%;">18</td><td align="center" style="width:14%;">19</td><td align="center" style="width:14%;">20</td><td align="center" style="width:14%;">21</td><td class="CalWeekendDay" align="center" style="width:14%;">22</td></tr><tr><td class="CalWeekendDay" align="center" style="width:14%;">23</td><td align="center" style="width:14%;">24</td><td align="center" style="width:14%;">25</td><td align="center" style="width:14%;">26</td><td align="center" style="width:14%;"><a href="http://www.blogjava.net/wangxinsh55/archive/2006/04/27.html"><u>27</u></a></td><td align="center" style="width:14%;"><a href="http://www.blogjava.net/wangxinsh55/archive/2006/04/28.html"><u>28</u></a></td><td class="CalWeekendDay" align="center" style="width:14%;">29</td></tr><tr><td class="CalWeekendDay" align="center" style="width:14%;">30</td><td class="CalOtherMonthDay" align="center" style="width:14%;">1</td><td class="CalOtherMonthDay" align="center" style="width:14%;">2</td><td class="CalOtherMonthDay" align="center" style="width:14%;">3</td><td class="CalOtherMonthDay" align="center" style="width:14%;">4</td><td class="CalOtherMonthDay" align="center" style="width:14%;">5</td><td class="CalOtherMonthDay" align="center" style="width:14%;">6</td></tr>
+</tbody></table>
+<br>
+			
+			
+<h3>常用链接</h3>
+<ul>
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl01_lnkLinkItem" href="http://www.blogjava.net/wangxinsh55/MyPosts.html">我的随笔</a></li>
+	
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl02_lnkLinkItem" href="http://www.blogjava.net/wangxinsh55/MyComments.html">我的评论</a></li>
+	
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl03_lnkLinkItem" href="http://www.blogjava.net/wangxinsh55/OtherPosts.html">我的参与</a></li>
+	
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl04_lnkLinkItem" href="http://www.blogjava.net/wangxinsh55/RecentComments.html">最新评论</a></li>
+	</ul>
+<h3>留言簿<span style="font-size:11px;font-weight:normal;">(36)</span></h3>
+<ul>
+	<li>
+		<a id="SingleColumn1_ctl01_lnkMessages" href="http://www.blogjava.net/wangxinsh55/Contact.aspx?id=1">给我留言</a>
+	</li><li>
+		<a id="SingleColumn1_ctl01_lnkPublicMsgView" href="http://www.blogjava.net/wangxinsh55/default.aspx?opt=msg">查看公开留言</a>
+	</li><li>
+		<a id="SingleColumn1_ctl01_lnkPrivateMsgView" href="http://www.blogjava.net/wangxinsh55/admin/MyMessages.aspx">查看私人留言</a>
+	</li>
+</ul>
+
+<!--done-->
+
+		<h1 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(385)</span></h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl01_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/19400.html">.NET(14)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl01_RssLink" title="Subscribe to .NET(14)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/19400.html/rss"><img title="Subscribe to .NET(14)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl02_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/20256.html">ActiveX控件(3)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl02_RssLink" title="Subscribe to ActiveX控件(3)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/20256.html/rss"><img title="Subscribe to ActiveX控件(3)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl03_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9540.html">AJAX(14)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl03_RssLink" title="Subscribe to AJAX(14)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9540.html/rss"><img title="Subscribe to AJAX(14)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl04_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/49650.html">android(4)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl04_RssLink" title="Subscribe to android(4)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/49650.html/rss"><img title="Subscribe to android(4)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl05_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9194.html">AXIS(31)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl05_RssLink" title="Subscribe to AXIS(31)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9194.html/rss"><img title="Subscribe to AXIS(31)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl06_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/20255.html">C++(26)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl06_RssLink" title="Subscribe to C++(26)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/20255.html/rss"><img title="Subscribe to C++(26)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl07_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/22930.html">DELL笔记本重装系统(1)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl07_RssLink" title="Subscribe to DELL笔记本重装系统(1)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/22930.html/rss"><img title="Subscribe to DELL笔记本重装系统(1)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl08_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/29206.html">flash(14)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl08_RssLink" title="Subscribe to flash(14)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/29206.html/rss"><img title="Subscribe to flash(14)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl09_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9223.html">JAVA(109)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl09_RssLink" title="Subscribe to JAVA(109)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9223.html/rss"><img title="Subscribe to JAVA(109)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl10_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9541.html">JavaScript(42)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl10_RssLink" title="Subscribe to JavaScript(42)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9541.html/rss"><img title="Subscribe to JavaScript(42)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl11_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9224.html">JSP(42)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl11_RssLink" title="Subscribe to JSP(42)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9224.html/rss"><img title="Subscribe to JSP(42)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl12_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9195.html">LINUX(16)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl12_RssLink" title="Subscribe to LINUX(16)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9195.html/rss"><img title="Subscribe to LINUX(16)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl13_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/49905.html">mysql(3)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl13_RssLink" title="Subscribe to mysql(3)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/49905.html/rss"><img title="Subscribe to mysql(3)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl14_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/33868.html">oracle(16)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl14_RssLink" title="Subscribe to oracle(16)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/33868.html/rss"><img title="Subscribe to oracle(16)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl15_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/40298.html">PHP(2)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl15_RssLink" title="Subscribe to PHP(2)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/40298.html/rss"><img title="Subscribe to PHP(2)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl16_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/30592.html">rmi(2)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl16_RssLink" title="Subscribe to rmi(2)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/30592.html/rss"><img title="Subscribe to rmi(2)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl17_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9356.html">Ruby on rails(1)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl17_RssLink" title="Subscribe to Ruby on rails(1)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9356.html/rss"><img title="Subscribe to Ruby on rails(1)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl18_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9196.html">SQL SERVER(10)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl18_RssLink" title="Subscribe to SQL SERVER(10)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9196.html/rss"><img title="Subscribe to SQL SERVER(10)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl19_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/14223.html">struts(13)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl19_RssLink" title="Subscribe to struts(13)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/14223.html/rss"><img title="Subscribe to struts(13)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl20_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/24824.html">tomcat(6)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl20_RssLink" title="Subscribe to tomcat(6)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/24824.html/rss"><img title="Subscribe to tomcat(6)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl21_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/27662.html">vista(3)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl21_RssLink" title="Subscribe to vista(3)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/27662.html/rss"><img title="Subscribe to vista(3)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl22_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9197.html">收藏(13)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl22_RssLink" title="Subscribe to 收藏(13)" class="listitem" href="http://www.blogjava.net/wangxinsh55/category/9197.html/rss"><img title="Subscribe to 收藏(13)" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml(1).gif" style="border-width:0px;"></a></li>
+			
+				</ul>
+			
+	
+		<h1 class="catListTitle">随笔档案<span style="font-size:11px;font-weight:normal">(376)</span></h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl01_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2012/04.html">2012年4月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl02_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2012/03.html">2012年3月 (6)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl03_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2012/02.html">2012年2月 (4)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl04_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2012/01.html">2012年1月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl05_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2011/11.html">2011年11月 (4)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl06_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2011/10.html">2011年10月 (16)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl07_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2011/09.html">2011年9月 (8)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl08_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2011/08.html">2011年8月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl09_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2011/07.html">2011年7月 (6)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl10_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2011/06.html">2011年6月 (5)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl11_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2011/05.html">2011年5月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl12_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2011/04.html">2011年4月 (12)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl13_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2011/03.html">2011年3月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl14_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2011/02.html">2011年2月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl15_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2010/12.html">2010年12月 (4)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl16_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2010/11.html">2010年11月 (4)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl17_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2010/10.html">2010年10月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl18_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2010/09.html">2010年9月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl19_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2010/08.html">2010年8月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl20_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2010/07.html">2010年7月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl21_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2010/06.html">2010年6月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl22_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2010/05.html">2010年5月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl23_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2010/04.html">2010年4月 (12)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl24_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2010/02.html">2010年2月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl25_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2010/01.html">2010年1月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl26_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2009/11.html">2009年11月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl27_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2009/09.html">2009年9月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl28_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2009/08.html">2009年8月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl29_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2009/07.html">2009年7月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl30_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2009/06.html">2009年6月 (8)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl31_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2009/05.html">2009年5月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl32_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2009/03.html">2009年3月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl33_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2009/02.html">2009年2月 (4)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl34_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2009/01.html">2009年1月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl35_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2008/11.html">2008年11月 (6)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl36_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2008/08.html">2008年8月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl37_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2008/07.html">2008年7月 (9)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl38_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2008/05.html">2008年5月 (5)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl39_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2008/04.html">2008年4月 (4)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl40_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2008/03.html">2008年3月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl41_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2008/02.html">2008年2月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl42_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2008/01.html">2008年1月 (5)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl43_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2007/12.html">2007年12月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl44_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2007/11.html">2007年11月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl45_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2007/10.html">2007年10月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl46_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2007/09.html">2007年9月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl47_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2007/08.html">2007年8月 (6)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl48_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2007/07.html">2007年7月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl49_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2007/06.html">2007年6月 (9)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl50_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2007/05.html">2007年5月 (6)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl51_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2007/04.html">2007年4月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl52_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2007/03.html">2007年3月 (11)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl53_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2007/02.html">2007年2月 (10)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl54_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2007/01.html">2007年1月 (6)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl55_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2006/12.html">2006年12月 (30)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl56_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2006/11.html">2006年11月 (7)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl57_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2006/10.html">2006年10月 (11)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl58_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2006/09.html">2006年9月 (18)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl59_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2006/08.html">2006年8月 (31)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl60_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2006/07.html">2006年7月 (8)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl61_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2006/06.html">2006年6月 (5)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl62_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2006/05.html">2006年5月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl63_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2006/04.html">2006年4月 (19)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl64_Link" class="listitem" href="http://www.blogjava.net/wangxinsh55/archive/2006/03.html">2006年3月 (10)</a></li>
+			
+				</ul>
+			
+	
+
+
+<h3>最新随笔</h3>
+<div class="RecentComment">
+<ul style="word-break:break-all">
+	
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl00_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/04/09/373650.html">1.&nbsp;Liunx下做端口映射</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl01_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/03/29/372994.html">2.&nbsp;spring mongdb体验</a></li>
+		
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl01_RecentPostsList2_ctl01_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/03/29/372993.html">3.&nbsp;使用 Spring Data JPA 简化 JPA 开发</a></li>
+		
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl01_RecentPostsList2_ctl02_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/03/29/372988.html">4.&nbsp;spring data mongodb的Converter问题</a></li>
+		
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl01_RecentPostsList2_ctl03_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/03/29/372987.html">5.&nbsp;Mongodb与spring集成（1）------配置 </a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl02_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/03/09/371569.html">6.&nbsp;理解Javascript的闭包</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl03_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/03/02/371146.html">7.&nbsp;异地SQL Server数据库查询及备份等操作</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl04_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/02/22/370537.html">8.&nbsp;CVS用户管理</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl05_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/02/09/369653.html">9.&nbsp;4 个超炫的免费 jQuery 翻页插件</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl06_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/02/03/369296.html">10.&nbsp;git使用总结</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl07_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/02/02/369257.html">11.&nbsp;版本控制git小试</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl08_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/01/12/368415.html">12.&nbsp;K-Means 聚类算法</a></li>
+		
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl08_RecentPostsList2_ctl01_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/01/12/368414.html">13.&nbsp;字符串相似度算法</a></li>
+		
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl08_RecentPostsList2_ctl02_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/01/12/368405.html">14.&nbsp;java模拟浏览器包htmlunit，selenium</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl09_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/11/23/364632.html">15.&nbsp;10 个很棒的 jQuery 代码片段</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl10_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/11/09/363353.html">16.&nbsp;关于Hibernate一对一不能延迟加载的总结</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl11_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/11/02/362559.html">17.&nbsp;Ubuntu 11.10中安装fcitx 4.0.1版本小企鹅输入法</a></li>
+		
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl11_RecentPostsList2_ctl01_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/11/02/362539.html">18.&nbsp;ubuntu11.10配置与设置手记</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl12_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/10/27/362165.html">19.&nbsp;Spring事务配置的五种方式</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl13_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/10/26/362112.html">20.&nbsp;Nginx配置文件详细说明</a></li>
+		
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl13_RecentPostsList2_ctl01_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/10/26/362105.html">21.&nbsp;Linux下nginx的自启动脚本</a></li>
+		
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl13_RecentPostsList2_ctl02_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/10/26/362103.html">22.&nbsp;Linux下nginx的安装</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl14_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/10/25/362024.html">23.&nbsp;Ubuntu 系统 Update-rc.d 命令</a></li>
+		
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl14_RecentPostsList2_ctl01_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/10/25/362021.html">24.&nbsp;ubuntu下设置程序开机自启动的几种方法</a></li>
+		
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl14_RecentPostsList2_ctl02_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/10/25/361995.html">25.&nbsp;ubuntu 11.10 下安装mysql5.5.17 (个人安装过程)</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl15_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/10/24/361913.html">26.&nbsp;ubuntu 11.10 下安装mysql5.5.17</a></li>
+		
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl15_RecentPostsList2_ctl01_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/10/24/361906.html">27.&nbsp;/etc/profile和/etc/environment的比较 </a></li>
+		
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl15_RecentPostsList2_ctl02_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/10/24/361874.html">28.&nbsp;mysql数据库备份及恢复</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl16_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/10/21/361695.html">29.&nbsp;图文解说：Nginx+tomcat+Ubuntu10配置负载均衡</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl03_RecentPostsList_ctl17_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/10/20/361647.html">30.&nbsp;Ubuntu 11.04下jdk安装与配置</a></li>
+		
+	
+</ul>
+</div>
+
+<script language="JavaScript">
+function SearchGoogle(key,evt,site)
+		{
+			if(evt.keyCode==13 || evt.keyCode==0 || evt.type =='click')
+			{
+				key.focus();
+				var keystr = encodeURIComponent(key.value);
+				url = "http://www.google.com/search?q=";
+				url = url+keystr;
+				url += "&ie=UTF-8&oe=GB2312&hl=zh-CN&domains="+site+"&sitesearch="+site;
+				window.location=url;
+				return false;
+			}
+		}
+</script>
+<h3>搜索</h3>
+<ul>
+	<li>
+		</li><li><input style="WIDTH: 130px" type="text" name="q" id="q" onkeydown="return SearchGoogle(document.getElementById(&#39;q&#39;),event,&#39;www.blogjava.net/wangxinsh55&#39;)">&nbsp;<input onclick="SearchGoogle(document.getElementById(&#39;q&#39;),event,&#39;www.blogjava.net/wangxinsh55&#39;)" type="button" value="搜索" name="sa">
+	</li>
+</ul>
+
+<h3>积分与排名</h3>
+<ul>
+	<li>
+		积分 -
+		388463
+	</li><li>
+		排名 -
+		37
+	</li>
+</ul>
+
+<h3>最新评论
+	<a id="SingleColumn1__358a03b_RSSHyperlink1" href="http://www.blogjava.net/wangxinsh55/CommentsRSS.aspx"><img src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/xml.gif" style="border-width:0px;"></a></h3>
+<div class="RecentComment">
+	
+			<ul>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__358a03b_CommentList_ctl01_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/04/13/325325.html#374059">1.&nbsp;re: 豆丁及百度文件格式描述[未登录]</a>
+			</li>
+			<li style="word-break:break-all">
+				豆丁文档下载器提示错误：<br>“无法解析此远程名称 file.yimk.com”<br>是什么原因呢？
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--yy</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__358a03b_CommentList_ctl02_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/04/09/325323.html#373624">2.&nbsp;re:  百度文库浏览器分析及实现(续)</a>
+			</li>
+			<li style="word-break:break-all">
+				迫切想知道百度文库知道的格式，谢谢。能发我邮箱吗？
+<br>ser88@163.com
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--shenenrui</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__358a03b_CommentList_ctl03_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/02/25/39219.html#370769">3.&nbsp;re: JTree用法及JTree使用经验总结</a>
+			</li>
+			<li style="word-break:break-all">
+				顶啊！我们课程设计要做个模拟文件管理，我想用jtree，但是还没有什么思路，能指点一下么？大侠！
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--鑫鑫小7</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__358a03b_CommentList_ctl04_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/02/21/242295.html#370425">4.&nbsp;re: JQuery-Dialog(弹出窗口，遮蔽窗口)</a>
+			</li>
+			<li style="word-break:break-all">
+				3
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--22</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__358a03b_CommentList_ctl05_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/02/03/346787.html#369329">5.&nbsp;re: tesseract-ocr识别中文扫描图片实例讲解 [未登录]</a>
+			</li>
+			<li style="word-break:break-all">
+				评论内容较长,点击标题查看
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--juice</li>
+		
+			</ul>
+		
+</div>
+
+<h3>阅读排行榜</h3>
+<div class="RecentComment">
+	
+			<ul style="word-break:break-all">
+		
+			<li>
+				<a id="SingleColumn1__1729ac8_TopList_ctl01_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2008/11/24/242295.html">1.&nbsp;JQuery-Dialog(弹出窗口，遮蔽窗口)(51766)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__1729ac8_TopList_ctl02_Hyperlink1" href="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/JTree用法及JTree使用经验总结 - SIMONE - BlogJava.htm">2.&nbsp;JTree用法及JTree使用经验总结(16891)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__1729ac8_TopList_ctl03_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2010/01/31/311396.html">3.&nbsp;CKeditor 配置使用(14391)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__1729ac8_TopList_ctl04_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2007/03/23/105743.html">4.&nbsp;window.close关闭窗口，不弹出系统提示，直接关闭(14317)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__1729ac8_TopList_ctl05_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2006/04/27/43535.html">5.&nbsp;Windows Media Player 网页播放器 参数含义(9596)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+
+<h3>评论排行榜</h3>
+<div class="RecentComment">
+	
+			<ul style="word-break:break-all">
+		
+			<li>
+				<a id="SingleColumn1__2687508_TopList_ctl01_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2007/03/23/105743.html">1.&nbsp;window.close关闭窗口，不弹出系统提示，直接关闭(10)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2687508_TopList_ctl02_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2009/06/10/281143.html">2.&nbsp;我写的javascript常用静态方法类，分享大家(7)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2687508_TopList_ctl03_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2006/04/27/43535.html">3.&nbsp;Windows Media Player 网页播放器 参数含义(7)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2687508_TopList_ctl04_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2010/01/31/311396.html">4.&nbsp;CKeditor 配置使用(6)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2687508_TopList_ctl05_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2007/06/22/125847.html">5.&nbsp;C#.net模拟提交表单POST(6)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+
+<h3>60天内阅读排行</h3>
+<div class="RecentComment">
+	
+			<ul>
+		
+			<li>
+				<a id="SingleColumn1__1d5f381_TopList_ctl01_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/02/22/370537.html">1.&nbsp;CVS用户管理(112)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__1d5f381_TopList_ctl02_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/03/29/372987.html">2.&nbsp;Mongodb与spring集成（1）------配置 (109)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__1d5f381_TopList_ctl03_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/03/29/372993.html">3.&nbsp;使用 Spring Data JPA 简化 JPA 开发(78)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__1d5f381_TopList_ctl04_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/03/29/372994.html">4.&nbsp;spring mongdb体验(74)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__1d5f381_TopList_ctl05_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/03/02/371146.html">5.&nbsp;异地SQL Server数据库查询及备份等操作(40)</a>
+			</li>
+		
+			</ul>
+		
+</div></div>
+	
+</div>
+<div id="centercontent">
+	
+					
+<!--done-->
+<div class="post">
+	<div class="postTitle">
+		<a id="viewpost1_TitleUrl" class="postTitle2" href="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/JTree用法及JTree使用经验总结 - SIMONE - BlogJava.htm">JTree用法及JTree使用经验总结</a>
+	</div>
+	
+		<div style="border: 1px solid rgb(204, 204, 204); padding: 4px 5px 4px 4px; background-color: rgb(238, 238, 238); font-size: 13px; width: 98%;">
+				<!--<br><br>Code highlighting produced by Actipro CodeHighlighter (freeware)<br>http://www.CodeHighlighter.com/<br><br>-->
+				<span style="color: rgb(0, 0, 255);">import</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;java.awt.Dimension;<br></span>
+				<span style="color: rgb(0, 0, 255);">import</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;java.awt.Color;<br></span>
+				<span style="color: rgb(0, 0, 255);">import</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;javax.swing.JFrame;<br></span>
+				<span style="color: rgb(0, 0, 255);">import</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;javax.swing.JPanel;<br></span>
+				<span style="color: rgb(0, 0, 255);">import</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;javax.swing.JScrollPane;<br></span>
+				<span style="color: rgb(0, 0, 255);">import</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;javax.swing.JTree;<br></span>
+				<span style="color: rgb(0, 0, 255);">import</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;javax.swing.BoxLayout;<br></span>
+				<span style="color: rgb(0, 0, 255);">import</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;javax.swing.tree.TreePath;<br></span>
+				<span style="color: rgb(0, 0, 255);">import</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;javax.swing.tree.DefaultMutableTreeNode;<br></span>
+				<span style="color: rgb(0, 0, 255);">import</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;javax.swing.tree.DefaultTreeModel;<br></span>
+				<span style="color: rgb(0, 128, 0);">/*</span>
+				<span style="color: rgb(0, 128, 0);">
+						<br>JTree的构造函数:<br>JTree()<br>JTree(Hashtable&nbsp;value)<br>JTree(Object[]&nbsp;value)//只有这个构造函数可以创建多个根结点<br>JTree(TreeModel&nbsp;newModel)<br>JTree(TreeNode&nbsp;root)<br>JTree(TreeNode&nbsp;root,&nbsp;boolean&nbsp;asksAllowsChildren)<br>JTree(Vector&nbsp;value)<br><br></span>
+				<span style="color: rgb(0, 128, 0);">*/</span>
+				<span style="color: rgb(0, 0, 0);">
+						<br>
+				</span>
+				<span style="color: rgb(0, 0, 255);">public</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">class</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JTreeDemo<br>{<br>&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">public</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">static</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">void</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;main&nbsp;(String[]&nbsp;args)<br>&nbsp;{<br><br><br>&nbsp;&nbsp;</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">构造函数：JTree()</span>
+				<span style="color: rgb(0, 128, 0);">
+						<br>
+				</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;&nbsp;JTree&nbsp;example1&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JTree();<br><br>&nbsp;<br><br>&nbsp;&nbsp;<br>&nbsp;&nbsp;</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">构造函数：JTree(Object[]&nbsp;value)</span>
+				<span style="color: rgb(0, 128, 0);">
+						<br>
+				</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;&nbsp;Object[]&nbsp;letters</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;{</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">a</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">,&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">b</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">,&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">c</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">,&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">d</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">,&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">e</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">};<br>&nbsp;&nbsp;JTree&nbsp;example2&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JTree&nbsp;(letters);<br><br>&nbsp;<br><br><br>&nbsp;&nbsp;</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">构造函数：JTree(TreeNode&nbsp;root)(TreeNode空)<br>&nbsp;&nbsp;</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">用空结点创建树</span>
+				<span style="color: rgb(0, 128, 0);">
+						<br>
+				</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;&nbsp;DefaultMutableTreeNode&nbsp;node1&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode();</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">定义树结点</span>
+				<span style="color: rgb(0, 128, 0);">
+						<br>
+				</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;&nbsp;JTree&nbsp;example3&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JTree&nbsp;(node1);</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">用此树结点做参数调用&nbsp;JTree的构造函数创建含有一个根结点的树<br><br>&nbsp;<br><br><br>&nbsp;&nbsp;</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">构造函数：JTree(TreeNode&nbsp;root)(同上,只是TreeNode非空)<br>&nbsp;&nbsp;</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">用一个根结点创建树</span>
+				<span style="color: rgb(0, 128, 0);">
+						<br>
+				</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;&nbsp;DefaultMutableTreeNode&nbsp;node2&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Color</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">);<br>&nbsp;&nbsp;JTree&nbsp;example4&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JTree&nbsp;(node2);</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">结点不可以颜色,默认为白面黑字</span>
+				<span style="color: rgb(0, 128, 0);">
+						<br>
+				</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;&nbsp;example4.setBackground&nbsp;(Color.lightGray);<br><br>&nbsp;<br><br><br>&nbsp;&nbsp;</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">构造函数：JTree(TreeNode&nbsp;root,&nbsp;boolean&nbsp;asksAllowsChildren)(同上,只是TreeNode又有不同)<br>&nbsp;&nbsp;</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">使用DefaultMutableTreeNode类先用一个根结点创建树，设置为可添加孩子结点,再添加孩子结点</span>
+				<span style="color: rgb(0, 128, 0);">
+						<br>
+				</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;&nbsp;DefaultMutableTreeNode&nbsp;color&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Color</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">,&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">true</span>
+				<span style="color: rgb(0, 0, 0);">);<br>&nbsp;&nbsp;DefaultMutableTreeNode&nbsp;gray&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Gray</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">);<br>&nbsp;&nbsp;color.add&nbsp;(gray);<br>&nbsp;&nbsp;color.add&nbsp;(</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Red</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">));<br>&nbsp;&nbsp;gray.add&nbsp;(</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Lightgray</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">));<br>&nbsp;&nbsp;gray.add&nbsp;(</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Darkgray</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">));<br>&nbsp;&nbsp;color.add&nbsp;(</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Green</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">));<br>&nbsp;&nbsp;JTree&nbsp;example5&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JTree&nbsp;(color);<br>&nbsp;&nbsp;<br>&nbsp;&nbsp;<br>&nbsp;&nbsp;<br>&nbsp;&nbsp;<br>&nbsp;&nbsp;</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">构造函数：JTree(TreeNode&nbsp;root)(同上,只是TreeNode非空)<br>&nbsp;&nbsp;</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">通过逐个添加结点创建树</span>
+				<span style="color: rgb(0, 128, 0);">
+						<br>
+				</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;&nbsp;DefaultMutableTreeNode&nbsp;biology&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Biology</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">);<br>&nbsp;&nbsp;DefaultMutableTreeNode&nbsp;animal&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Animal</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">);<br>&nbsp;&nbsp;DefaultMutableTreeNode&nbsp;mammal&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Mammal</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">);<br>&nbsp;&nbsp;DefaultMutableTreeNode&nbsp;horse&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Horse</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">);<br>&nbsp;&nbsp;mammal.add&nbsp;(horse);<br>&nbsp;&nbsp;animal.add&nbsp;(mammal);<br>&nbsp;&nbsp;biology.add&nbsp;(animal);<br>&nbsp;&nbsp;JTree&nbsp;example6&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JTree&nbsp;(biology);<br>&nbsp;&nbsp;horse.isLeaf();<br>&nbsp;&nbsp;horse.isRoot();<br>&nbsp;&nbsp;<br>&nbsp;&nbsp;<br><br><br>&nbsp;&nbsp;</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">构造函数:JTree(TreeModel&nbsp;newModel)<br>&nbsp;&nbsp;</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">用DefaultMutableTreeNodel类定义一个结点再用这个结点做参数定义一个用DefaultTreeMode<br>&nbsp;&nbsp;</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">创建一个树的模型,再用JTree的构造函数创建一个树</span>
+				<span style="color: rgb(0, 128, 0);">
+						<br>
+				</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;&nbsp;<br>&nbsp;&nbsp;DefaultMutableTreeNode&nbsp;root&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Root1</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">);<br>&nbsp;&nbsp;DefaultMutableTreeNode&nbsp;child1&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Child1</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">);<br>&nbsp;&nbsp;DefaultMutableTreeNode&nbsp;child11&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Child11</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">);<br>&nbsp;&nbsp;DefaultMutableTreeNode&nbsp;child111&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultMutableTreeNode&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">Child111</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">);<br>&nbsp;&nbsp;root.add&nbsp;(child1);&nbsp;child1.add&nbsp;(child11);&nbsp;child11.add&nbsp;(child111);<br>&nbsp;&nbsp;<br>&nbsp;&nbsp;<br>&nbsp;&nbsp;<br>&nbsp;&nbsp;DefaultTreeModel&nbsp;model&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;DefaultTreeModel&nbsp;(root);<br>&nbsp;&nbsp;<br>&nbsp;&nbsp;JTree&nbsp;example7&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JTree&nbsp;(model);<br><br>&nbsp;<br><br>&nbsp;&nbsp;JPanel&nbsp;panel&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JPanel();<br>&nbsp;&nbsp;panel.setLayout&nbsp;(</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;BoxLayout&nbsp;(panel,&nbsp;BoxLayout.X_AXIS));<br>&nbsp;&nbsp;panel.setPreferredSize&nbsp;(</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;Dimension&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">700</span>
+				<span style="color: rgb(0, 0, 0);">,&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">400</span>
+				<span style="color: rgb(0, 0, 0);">));<br>&nbsp;&nbsp;panel.add&nbsp;(</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JScrollPane&nbsp;(example1));</span>
+				<span style="color: rgb(0, 128, 0);">//</span>
+				<span style="color: rgb(0, 128, 0);">JTree必须放在JScrollPane上</span>
+				<span style="color: rgb(0, 128, 0);">
+						<br>
+				</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;&nbsp;panel.add&nbsp;(</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JScrollPane&nbsp;(example2));<br>&nbsp;&nbsp;panel.add&nbsp;(</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JScrollPane&nbsp;(example3));<br>&nbsp;&nbsp;panel.add&nbsp;(</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JScrollPane&nbsp;(example4));<br>&nbsp;&nbsp;panel.add&nbsp;(</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JScrollPane&nbsp;(example5));<br>&nbsp;&nbsp;panel.add&nbsp;(</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JScrollPane&nbsp;(example6));<br>&nbsp;&nbsp;panel.add&nbsp;(</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JScrollPane&nbsp;(example7));<br>&nbsp;&nbsp;<br><br>&nbsp;<br><br>&nbsp;&nbsp;JFrame&nbsp;frame&nbsp;</span>
+				<span style="color: rgb(0, 0, 0);">=</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;</span>
+				<span style="color: rgb(0, 0, 255);">new</span>
+				<span style="color: rgb(0, 0, 0);">&nbsp;JFrame&nbsp;(</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">JTreeDemo</span>
+				<span style="color: rgb(0, 0, 0);">"</span>
+				<span style="color: rgb(0, 0, 0);">);<br>&nbsp;&nbsp;frame.setDefaultCloseOperation&nbsp;(JFrame.EXIT_ON_CLOSE);<br>&nbsp;&nbsp;frame.setContentPane&nbsp;(panel);<br>&nbsp;&nbsp;frame.pack();<br>&nbsp;&nbsp;frame.show();<br>&nbsp;}<br>}</span>
+		</div>
+		××××××××××××××××××××××××××××××××××××××××××××××<br><span class="oblog_text"><p>在实际开发过程中会经常使用JTree组件，平时会遇到这样或那样的问题，在此将偶得一点经验写下来，与大家共享，希望对大家有所帮助。</p><p>private JTree jtNetDevice;//数组件申明<br>private JScrollPane jspTree;//滚动面板申明</p><p><br><strong>1、初始化</strong><br>&nbsp;&nbsp;&nbsp; DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("root");<br>&nbsp;&nbsp;&nbsp; jtNetDevice = new JTree(rootNode);<br>&nbsp;&nbsp;&nbsp; jtNetDevice.setAutoscrolls(true);<br>&nbsp;&nbsp;&nbsp; getTreeSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);//设置单选模式<br>&nbsp;&nbsp;&nbsp; jspTree = new JScrollPane();<br>&nbsp;&nbsp;&nbsp; jspTree.getViewport().add(jtNetDevice, null);</p><p><strong>2、三个经常使用的取值函数</strong><br>&nbsp; private DefaultTreeModel getTreeModel(){<br>&nbsp;&nbsp;&nbsp; return (DefaultTreeModel)jtNetDevice.getModel();<br>&nbsp; }</p><p>&nbsp; private DefaultMutableTreeNode getRootNode(){<br>&nbsp;&nbsp;&nbsp; return (DefaultMutableTreeNode)getTreeModel().getRoot();<br>&nbsp; }<br>&nbsp; <br>&nbsp; private TreeSelectionModel getTreeSelectionModel(){<br>&nbsp;&nbsp;&nbsp; return jtNetDevice.getSelectionModel();<br>&nbsp; }<br>&nbsp; </p><p><strong>3、根据node得到path：<br></strong>&nbsp; TreePath visiblePath = new TreePath(getTreeModel().getPathToRoot(node));</p><p><strong>4、根据Path展开到该节点<br></strong>&nbsp; jtNetDevice.makeVisible(visiblePath);</p><p><strong>5、根据path设定该节点选定<br></strong>&nbsp; jtNetDevice.setSelectionPath(visiblePath); </p><p><strong>6、选中节点的方法<br></strong>&nbsp; 首先，根据节点得到树路径，其中chosen为需要选中的节点<br>&nbsp; TreePath visiblePath = new TreePath( ( (DefaultTreeModel) jtNetDevice.getModel()).<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; getPathToRoot(chosen));<br>&nbsp; 然后根据Path选中该节点<br>&nbsp; jtNetDevice.setSelectionPath(visiblePath);</p><p><strong>7、滚动到可见位置</strong><br>&nbsp; jtNetDevice.scrollPathToVisible(visiblePath);</p><p><strong>8、给JTree添加右键弹出菜单<br></strong>&nbsp; void jtNetDevice_mouseReleased(MouseEvent e) {<br>&nbsp;&nbsp;&nbsp; if (e.isPopupTrigger()) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jPopupMenu1.show(e.getComponent(), e.getX(), e.getY());//弹出右键菜单<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp; }</p><p><strong>9、关于JTree的展开<br></strong>&nbsp;&nbsp; // If expand is true, expands all nodes in the tree.<br>&nbsp;&nbsp; // Otherwise, collapses all nodes in the tree.<br>&nbsp;&nbsp; public void expandAll(JTree tree, boolean expand) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TreeNode root = (TreeNode)tree.getModel().getRoot();<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Traverse tree from root<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; expandAll(tree, new TreePath(root), expand);<br>&nbsp;&nbsp; }<br>&nbsp;&nbsp; private void expandAll(JTree tree, TreePath parent, boolean expand) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Traverse children<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TreeNode node = (TreeNode)parent.getLastPathComponent();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (node.getChildCount() &gt;= 0) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (Enumeration e=node.children(); e.hasMoreElements(); ) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TreeNode n = (TreeNode)e.nextElement();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TreePath path = parent.pathByAddingChild(n);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; expandAll(tree, path, expand);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Expansion or collapse must be done bottom-up<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (expand) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tree.expandPath(parent);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tree.collapsePath(parent);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp; }<br>&nbsp;</p><p><strong>10、如何遍历JTree</strong><br>&nbsp;&nbsp; //&nbsp;创建树<br>&nbsp;&nbsp; JTree tree = new JTree();<br>&nbsp;&nbsp; <br>&nbsp;&nbsp; // 添加树节点......<br>&nbsp;&nbsp; <br>&nbsp;&nbsp; //&nbsp;遍历所有节点<br>&nbsp;&nbsp; visitAllNodes(tree);<br>&nbsp;&nbsp; <br>&nbsp;&nbsp; //&nbsp;仅遍历展开的节点<br>&nbsp;&nbsp; visitAllExpandedNodes(tree);<br>&nbsp;&nbsp; <br>&nbsp;&nbsp; // Traverse all nodes in tree<br>&nbsp;&nbsp; public void visitAllNodes(JTree tree) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TreeNode root = (TreeNode)tree.getModel().getRoot();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; visitAllNodes(root);<br>&nbsp;&nbsp; }<br>&nbsp;&nbsp; public void visitAllNodes(TreeNode node) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // node is visited exactly once<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; process(node);<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (node.getChildCount() &gt;= 0) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (Enumeration e=node.children(); e.hasMoreElements(); ) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TreeNode n = (TreeNode)e.nextElement();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; visitAllNodes(n);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp; }<br>&nbsp;&nbsp; <br>&nbsp;&nbsp; // Traverse all expanded nodes in tree<br>&nbsp;&nbsp; public void visitAllExpandedNodes(JTree tree) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TreeNode root = (TreeNode)tree.getModel().getRoot();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; visitAllExpandedNodes(tree, new TreePath(root));<br>&nbsp;&nbsp; }<br>&nbsp;&nbsp; public void visitAllExpandedNodes(JTree tree, TreePath parent) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Return if node is not expanded<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!tree.isVisible(parent)) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // node is visible and is visited exactly once<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TreeNode node = (TreeNode)parent.getLastPathComponent();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; process(node);<br>&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Visit all children<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (node.getChildCount() &gt;= 0) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (Enumeration e=node.children(); e.hasMoreElements(); ) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TreeNode n = (TreeNode)e.nextElement();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TreePath path = parent.pathByAddingChild(n);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; visitAllExpandedNodes(tree, path);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp; }</p></span><br>
+	<div class="postDesc">posted on 2006-04-04 17:24 <a href="http://www.blogjava.net/wangxinsh55/">SIMONE</a> 阅读(16891) <a href="http://www.blogjava.net/wangxinsh55/archive/2006/04/04/39219.html#Post">评论(3)</a> &nbsp;<a href="http://www.blogjava.net/wangxinsh55/admin/EditPosts.aspx?postid=39219">编辑</a> &nbsp;<a href="http://www.blogjava.net/wangxinsh55/AddToFavorite.aspx?id=39219">收藏</a>  所属分类: <a href="http://www.blogjava.net/wangxinsh55/category/9223.html">JAVA</a> </div>
+</div>
+<img src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/39219.html" width="1" height="1">
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+rdf:about="http://www.blogjava.net/wangxinsh55/archive/2006/04/04/39219.html"
+dc:identifier="http://www.blogjava.net/wangxinsh55/archive/2006/04/04/39219.html"
+dc:title="JTree用法及JTree使用经验总结"
+trackback:ping="http://www.blogjava.net/wangxinsh55/services/trackbacks/39219.aspx" />
+</rdf:RDF>
+-->
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('AjaxHolder$scriptmanager1', document.getElementById('Form1'));
+Sys.WebForms.PageRequestManager.getInstance()._updateControls(['tAjaxHolder$UpdatePanel1'], [], [], 90);
+//]]>
+</script>
+
+<div id="AjaxHolder_UpdatePanel1">
+	    
+    <a name="pagedcomment"></a>
+<!--done-->
+<br>
+<b>FeedBack:</b>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a title="permalink: re: JTree用法及JTree使用经验总结" href="http://www.blogjava.net/wangxinsh55/archive/2006/04/04/39219.html#200049">#</a>&nbsp;<a name="200049"></a>re: JTree用法及JTree使用经验总结</div>
+			<div class="feedbackListSubtitle">
+				2008-05-12 16:40 | <a id="AjaxHolder_Comments_CommentList_ctl00_NameLink" target="_blank">王斌</a><br>
+				<div align="left">不错，顶~&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;王斌&quot;)" href="http://www.blogjava.net/wangxinsh55/archive/2006/04/04/39219.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e7%8e%8b%e6%96%8c" target="_blank">更多评论</a><br><a id="AjaxHolder_Comments_CommentList_ctl00_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl00$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl00_EditLink"></a></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a title="permalink: re: JTree用法及JTree使用经验总结" href="http://www.blogjava.net/wangxinsh55/archive/2006/04/04/39219.html#353764">#</a>&nbsp;<a name="353764"></a>re: JTree用法及JTree使用经验总结</div>
+			<div class="feedbackListSubtitle">
+				2011-07-06 09:32 | <a id="AjaxHolder_Comments_CommentList_ctl01_NameLink" target="_blank">路人</a><br>
+				<div align="left">博主感谢你!&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;路人&quot;)" href="http://www.blogjava.net/wangxinsh55/archive/2006/04/04/39219.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e8%b7%af%e4%ba%ba" target="_blank">更多评论</a><br><a id="AjaxHolder_Comments_CommentList_ctl01_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl01$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl01_EditLink"></a></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a title="permalink: re: JTree用法及JTree使用经验总结" href="http://www.blogjava.net/wangxinsh55/archive/2006/04/04/39219.html#370769">#</a>&nbsp;<a name="370769"></a>re: JTree用法及JTree使用经验总结<a name="Post"></a></div>
+			<div class="feedbackListSubtitle">
+				2012-02-25 15:17 | <a id="AjaxHolder_Comments_CommentList_ctl02_NameLink" target="_blank">鑫鑫小7</a><br>
+				<div align="left">顶啊！我们课程设计要做个模拟文件管理，我想用jtree，但是还没有什么思路，能指点一下么？大侠！&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;鑫鑫小7&quot;)" href="http://www.blogjava.net/wangxinsh55/archive/2006/04/04/39219.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e9%91%ab%e9%91%ab%e5%b0%8f7" target="_blank">更多评论</a><br><a id="AjaxHolder_Comments_CommentList_ctl02_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl02$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl02_EditLink"></a></div>
+			</div>
+			
+			
+		</div>
+	
+
+
+
+
+<style>
+td { font-size: 12px }
+.commentTextBox 
+{ 
+    font-family : Verdana; 
+    font-size: 13px;
+ }
+</style>
+<!--Beging Temp Save-->
+<style>.userData { BEHAVIOR: url(#default#userdata) }
+	</style>
+<div class="userData" id="CommentsPersistDiv"></div>
+
+<script type="text/javascript">
+function pageLoad()
+{
+    Sys.WebForms.PageRequestManager.getInstance().add_initializeRequest(handleInitializeRequest);
+    //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(handleEndRequest);
+}
+
+function handleInitializeRequest(sender, args)
+{
+    var prm = Sys.WebForms.PageRequestManager.getInstance();
+    var eid = args.get_postBackElement().id;
+    if (eid.indexOf("DeleteLink")>0) 
+    {
+       args.get_postBackElement().innerHTML = "<font color='red'>正在删除...</font>";         
+    }    
+    else if (eid.indexOf("btnSubmit")>0) 
+    {
+       document.getElementById("AjaxHolder_PostComment_ltSubmitMsg").innerHTML="正在提交...";
+       document.getElementById("AjaxHolder_PostComment_btnSubmit").disabled = true;       
+    }   
+    else if(eid.indexOf("refreshList")>0)
+    {
+        document.getElementById("AjaxHolder_PostComment_refreshList").innerHTML="<font color='red'>正在刷新...</font>";
+    }
+   
+}	
+
+function TempSave(ElementID)
+{
+	try
+	{
+	CommentsPersistDiv.setAttribute("CommentContent",document.getElementById(ElementID).value);
+	CommentsPersistDiv.save("CommentXMLStore");
+	}
+	catch(ex)
+	{
+	}
+	
+}
+function Restore(ElementID)
+{
+	CommentsPersistDiv.load("CommentXMLStore");
+	document.getElementById(ElementID).value=CommentsPersistDiv.getAttribute("CommentContent");
+}	
+			
+			
+</script>
+<!--Ene TempSave-->
+<div id="divRefreshComments" style="text-align:right;margin-right:10px;margin-bottom:5px;font-size:12px"><a href="http://www.blogjava.net/RequireRegister.aspx">新用户注册</a>&nbsp;&nbsp;<a id="AjaxHolder_PostComment_refreshList" href="javascript:__doPostBack('AjaxHolder$PostComment$refreshList','')">刷新评论列表</a>&nbsp;&nbsp;</div>
+<div class="commentform">
+<script type="text/javascript" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/google_service.js">
+</script>
+<script type="text/javascript">
+var c_enable_dfp = true;
+if (navigator.userAgent.indexOf("Chrome/6.0.401.1") > 0) {
+c_enable_dfp = false;
+}
+if (c_enable_dfp) {
+try{
+  GS_googleAddAdSenseService("ca-pub-4210569241504288");
+  GS_googleEnableAllServices();
+  } catch (e) { }
+}
+</script><script src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/google_ads.js"></script>
+<script type="text/javascript">
+if (c_enable_dfp) {
+try{
+  GA_googleAddSlot("ca-pub-4210569241504288", "blogjava_commentbox_up");
+  GA_googleAddSlot("ca-pub-4210569241504288", "blogjava_blogpost_bottom");
+  //GA_googleAddSlot("ca-pub-4210569241504288", "blogjava_blogpost_bottom1");
+  } catch (e) { }
+}
+</script>
+<script type="text/javascript">
+if (c_enable_dfp) {
+try{
+  GA_googleFetchAds();
+  } catch (e) { }
+}
+</script>
+<span id="AjaxHolder_PostComment_ltSubmitMsg" style="color:Red;"></span>
+<br>
+<a name="Feedback"></a>
+	<div id="AjaxHolder_PostComment_divCommnentArea">
+		</div><table cellspacing="1" cellpadding="1" border="0">	
+		<tbody><tr>
+		<td id="AjaxHolder_PostComment_tdOnCommentForm" colspan="3" style="line-height:1.5">
+		<a href="http://q.cnblogs.com/" target="_blank">博问 - 解决您的IT难题</a><br>	
+		
+		<!--<div>
+		技术专题：<br/>
+		<a href="http://kb.cnblogs.com/zt/jquery/" title="jQuery" target="_blank">jQuery</a>&nbsp; &nbsp;<a href="http://kb.cnblogs.com/zt/android/" title="Android" target="_blank">Android</a>&nbsp; &nbsp;<a href="http://kb.cnblogs.com/zt/ipad/" title="iPad" target="_blank">iPad</a>
+		</div>-->
+		</td>
+	
+		</tr>
+		<tr>
+			<td colspan="3"></td>
+		</tr>
+		<tr>
+			<td width="75"></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td colspan="2">
+			<a href="http://www.cnblogs.com/" target="_blank">博客园</a>&nbsp;  <a href="http://q.cnblogs.com/" target="_blank">博问</a>&nbsp; <a href="http://news.cnblogs.com/" target="_blank">IT新闻</a>&nbsp; <!--<a href="http://home.cnblogs.com/ing/" target="_blank">闪存</a>&nbsp;  <a href="http://a4.yeshj.com/rd/36007/" target="_blank">学英语</a>&nbsp;  --><a href="http://job.cnblogs.com/cate-java_programmer/" target="_blank">Java程序员招聘</a>
+			</td>
+		</tr>
+		<tr>
+			<td width="55">标题</td>
+			<td><input name="AjaxHolder$PostComment$tbTitle" type="text" value="re: JTree用法及JTree使用经验总结" id="AjaxHolder_PostComment_tbTitle" class="commenttb" style="width:320"></td>
+			<td><span id="AjaxHolder_PostComment_RequiredFieldValidator1" style="color:Red;visibility:hidden;">请输入标题</span></td>
+		</tr>
+		<tr>
+			<td>姓名</td>
+			<td><input name="AjaxHolder$PostComment$tbName" type="text" id="AjaxHolder_PostComment_tbName" class="commenttb" style="width:320"></td>
+			<td><span id="AjaxHolder_PostComment_RequiredFieldValidator2" style="color:Red;visibility:hidden;">请输入你的姓名</span></td>
+		</tr>
+		<tr>
+			<td>主页</td>
+			<td><input name="AjaxHolder$PostComment$tbUrl" type="text" id="AjaxHolder_PostComment_tbUrl" class="commenttb" style="width:320"></td>
+			<td><font face="宋体"></font></td>
+		</tr>
+		<tr>
+			<td align="left" colspan="3">
+				<table id="AjaxHolder_PostComment_tbCaptchaImage" class="CommentForm" cellspacing="0" cellpadding="0" border="0">
+		<tbody><tr>
+			<td colspan="3">
+							<span id="AjaxHolder_PostComment_Requiredfieldvalidator4" style="color:Red;display:none;">请输入验证码</span>
+							<span id="AjaxHolder_PostComment_lblImage" style="color:Red;font-weight:bold;"></span>
+						</td>
+		</tr>
+		<tr>
+			<td width="78">验证码</td>
+			<td><input name="AjaxHolder$PostComment$CodeNumberTextBox" type="text" id="AjaxHolder_PostComment_CodeNumberTextBox">*&nbsp;&nbsp;<img src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/JpegImage.aspx"></td>
+			<td align="left"></td>
+		</tr>
+	</tbody></table>
+	
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">内容(请不要发表任何与政治相关的内容)
+				<span id="AjaxHolder_PostComment_RequiredFieldValidator3" style="color:Red;visibility:hidden;">请输入评论内容</span><br>
+				<textarea name="AjaxHolder$PostComment$tbComment" rows="10" cols="50" id="AjaxHolder_PostComment_tbComment" class="commentTextBox" onkeydown="ctlent(event,&#39;AjaxHolder_PostComment_tbComment&#39;)" style="Width:480;Height:220"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+		<span id="AjaxHolder_PostComment_Message" style="color:Red;"></span>
+		</td>
+		</tr><tr>
+			<td colspan="3"><input id="AjaxHolder_PostComment_chkRemember" type="checkbox" name="AjaxHolder$PostComment$chkRemember" checked="checked" tabindex="-1"><label for="AjaxHolder_PostComment_chkRemember">Remember Me?</label></td>
+		</tr>
+		<tr>
+			<td height="23"><input type="submit" name="AjaxHolder$PostComment$btnSubmit" value="提交" onclick="TempSave(&#39;AjaxHolder_PostComment_tbComment&#39;);WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;AjaxHolder$PostComment$btnSubmit&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="AjaxHolder_PostComment_btnSubmit" class="commentButton">
+				</td>
+			<td colspan="2" height="23">&nbsp;
+				<a id="AjaxHolder_PostComment_lnkLogin" href="http://www.blogjava.net/login.aspx?ReturnURL=http://www.blogjava.net/wangxinsh55/archive/2006/04/04/39219.html&SourceURL=/wangxinsh55/archive/2006/04/04/39219.html">登录</a>&nbsp;&nbsp;<!--<a id="AjaxHolder_PostComment_linkLoginComment" OnClick="if(document.getElementById('AjaxHolder_PostComment_tbComment').value != '') return confirm('未提交的评论内容将会丢失, 你真的要进入高级评论吗?');" href="http://www.blogjava.net/wangxinsh55/archive/2006/04/04/39219.html?login=1#Post">使用高级评论</a>&nbsp;&nbsp;<a href="http://www.blogjava.net/RequireRegister.aspx">新用户注册</a>&nbsp;&nbsp;<A href="#Top">返回页首</A>&nbsp;&nbsp;<a id="AjaxHolder_PostComment_lbRestore" OnClick="Restore('AjaxHolder_PostComment_tbComment'); return false;" href="/wangxinsh55/archive/2006/04/04/39219.html#Post">恢复上次提交</a>&nbsp;&nbsp;-->&nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+		</tr>
+		<tr>
+			<td colspan="3"><label class="CtrlEnter">[使用Ctrl+Enter键可以直接提交]</label></td>
+		</tr>
+		
+		
+		<tr>
+			<td colspan="3"><!--该文被作者在 2006-04-04 17:48 编辑过--></td>
+		</tr>
+		<!--
+		<TR>
+			<TD colSpan="3" height="5"></TD>
+		</TR>	
+		-->	
+		<tr>
+		<td colspan="3">
+		
+<script type="text/javascript">
+try{
+  GA_googleFillSlot("blogjava_blogpost_bottom");
+  } catch (e) { }
+</script><script src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/ads"></script><div id="google_ads_div_blogjava_blogpost_bottom_ad_wrapper">
+<div id="google_ads_div_blogjava_blogpost_bottom_ad_container" style="display:inline-block;">
+<ins style="width: 300px; height: 250px; display: inline-table; position: relative; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; border-image: initial; "><ins style="width: 300px; height: 250px; display: block; position: relative; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; border-image: initial; "><iframe id="google_ads_iframe_blogjava_blogpost_bottom" name="google_ads_iframe_blogjava_blogpost_bottom" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; border-image: initial; position: absolute; top: 0px; left: 0px; "></iframe></ins></ins></div>
+</div>
+<script>GA_googleCreateDomIframe("google_ads_div_blogjava_blogpost_bottom_ad_container" ,"blogjava_blogpost_bottom");</script>
+<br>
+
+		</td>
+		</tr>
+		<tr>			
+		<td colspan="3">
+		<div id="itnews_block" style="line-height:180%;" class="other_info_list">IT新闻：<br>· <a href="http://news.cnblogs.com/n/139032/" target="_blank">索尼PSN网络21点起离线维护13小时</a><br>· <a href="http://news.cnblogs.com/n/139031/" target="_blank">赛门铁克完成收购移动应用管理商Nukona交易</a><br>· <a href="http://news.cnblogs.com/n/139030/" target="_blank">1号店将涉足图书等领域 沃尔玛增持仍待审批</a><br>· <a href="http://news.cnblogs.com/n/139029/" target="_blank">美移动社交网络Path融资4千万美元 估值2.5亿</a><br>· <a href="http://news.cnblogs.com/n/139028/" target="_blank">传阿里巴巴集团30亿美元贷款吸引4家银行关注</a><br></div><div id="cnblogs_posts" style="line-height:180%;">博客园首页随笔：<br>· <a href="http://www.cnblogs.com/jirigala/archive/2012/04/16/2452930.html" target="_blank">第一次怀疑是微软bug，还是我又错了？以前都是从自己身上找问题，这次想从微软身上找问题了</a><br>· <a href="http://www.cnblogs.com/hanyonglu/archive/2012/04/16/2452915.html" target="_blank">IPad开发之有帮助的应用</a><br>· <a href="http://www.cnblogs.com/hqr9313/archive/2012/04/16/2452906.html" target="_blank">Java核心类库——内部类那点事儿</a><br>· <a href="http://www.cnblogs.com/tyb1222/archive/2012/04/16/2452867.html" target="_blank">WCF中的几种地址总结</a><br>· <a href="http://www.cnblogs.com/xiaogeer/archive/2012/04/16/2452861.html" target="_blank">Windows phone 7之样式与模板</a><br></div><div id="job_block" style="line-height:180%;">知识库：<br>· <a href="http://kb.cnblogs.com/page/138696/" target="_blank">使用缓存的9大误区（上）</a><br>· <a href="http://kb.cnblogs.com/page/138798/" target="_blank">ASP.NET MVC Controller激活系统详解：IoC的应用[下篇]</a><br>· <a href="http://kb.cnblogs.com/page/138774/" target="_blank">Facebook工程发布技术的幕后故事</a><br>· <a href="http://kb.cnblogs.com/page/138573/" target="_blank">使用Phalanger整合PHP和.Net</a><br>· <a href="http://kb.cnblogs.com/page/134052/" target="_blank">程序员编程生产力相差10倍意味着什么？</a><br></div>
+		</td>
+		</tr>
+		<tr>
+		<td colspan="3">
+<script type="text/javascript">
+try{
+  GA_googleFillSlot("blogjava_blogpost_bottom");
+  } catch (e) { }
+</script>
+<br>
+</td>
+		</tr>
+		<tr>
+			<td colspan="3" height="1">网站导航:<div id="blogsite">
+			<a href="http://www.cnblogs.com/" title="程序员的网上家园">博客园</a>&nbsp;&nbsp;
+			<a href="http://news.cnblogs.com/">IT新闻</a>&nbsp;&nbsp;
+			<a href="http://kb.cnblogs.com/">知识库</a>&nbsp;&nbsp;
+			<a href="http://www.cppblog.com/">C++博客</a>&nbsp;&nbsp;
+			<a href="http://job.cnblogs.com/">程序员招聘</a>&nbsp;&nbsp;
+			<a href="http://www.blogjava.net/wangxinsh55/archive/2006/04/04/39219.html?opt=admin">管理</a>
+			</div>
+		</td>
+		</tr>
+		<tr>
+			<td colspan="3" height="5">
+<div id="divRelativePosts">
+相关文章:
+	
+			<ul style="margin-top:0px;padding-left:0px;">
+		
+			<li style="list-style:none;">
+				<a id="AjaxHolder_PostComment_ctl08_RelativePostsList_ctl01_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/03/29/372994.html">spring mongdb体验</a>
+			</li>
+		
+			<li style="list-style:none;">
+				<a id="AjaxHolder_PostComment_ctl08_RelativePostsList_ctl02_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/03/29/372993.html">使用 Spring Data JPA 简化 JPA 开发</a>
+			</li>
+		
+			<li style="list-style:none;">
+				<a id="AjaxHolder_PostComment_ctl08_RelativePostsList_ctl03_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/03/29/372988.html">spring data mongodb的Converter问题</a>
+			</li>
+		
+			<li style="list-style:none;">
+				<a id="AjaxHolder_PostComment_ctl08_RelativePostsList_ctl04_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/03/29/372987.html">Mongodb与spring集成（1）------配置 </a>
+			</li>
+		
+			<li style="list-style:none;">
+				<a id="AjaxHolder_PostComment_ctl08_RelativePostsList_ctl05_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/02/03/369296.html">git使用总结</a>
+			</li>
+		
+			<li style="list-style:none;">
+				<a id="AjaxHolder_PostComment_ctl08_RelativePostsList_ctl06_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/02/02/369257.html">版本控制git小试</a>
+			</li>
+		
+			<li style="list-style:none;">
+				<a id="AjaxHolder_PostComment_ctl08_RelativePostsList_ctl07_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/01/12/368415.html">K-Means 聚类算法</a>
+			</li>
+		
+			<li style="list-style:none;">
+				<a id="AjaxHolder_PostComment_ctl08_RelativePostsList_ctl08_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/01/12/368414.html">字符串相似度算法</a>
+			</li>
+		
+			<li style="list-style:none;">
+				<a id="AjaxHolder_PostComment_ctl08_RelativePostsList_ctl09_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2012/01/12/368405.html">java模拟浏览器包htmlunit，selenium</a>
+			</li>
+		
+			<li style="list-style:none;">
+				<a id="AjaxHolder_PostComment_ctl08_RelativePostsList_ctl10_Hyperlink1" href="http://www.blogjava.net/wangxinsh55/archive/2011/11/09/363353.html">关于Hibernate一对一不能延迟加载的总结</a>
+			</li>
+		
+			</ul>
+		
+</div>
+</td>
+		</tr>	
+		<tr>
+			<td colspan="3">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="3" height="5"></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				</td>
+		</tr>		
+	</tbody></table>	
+</div>
+<div id="AjaxHolder_PostComment_ValidationSummary1" style="color:Red;display:none;">
+
+	</div>
+
+</div>
+
+				
+</div>
+
+<!--done-->
+<div class="footer">
+	
+	Copyright ©2012 SIMONE Powered By<a href="http://www.blogjava.net/">博客园</a> 模板提供：<a href="http://blog.hjenglish.com/">沪江博客</a>
+</div><script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0f40c2e633ac18bd05df208bba192663' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/h.js" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=0f40c2e633ac18bd05df208bba192663" target="_blank"><img border="0" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/21.gif" width="20" height="20"></a>
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("AjaxHolder_PostComment_ValidationSummary1"));
+var Page_Validators =  new Array(document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator1"), document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator2"), document.getElementById("AjaxHolder_PostComment_Requiredfieldvalidator4"), document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator3"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var AjaxHolder_PostComment_RequiredFieldValidator1 = document.all ? document.all["AjaxHolder_PostComment_RequiredFieldValidator1"] : document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator1");
+AjaxHolder_PostComment_RequiredFieldValidator1.controltovalidate = "AjaxHolder_PostComment_tbTitle";
+AjaxHolder_PostComment_RequiredFieldValidator1.errormessage = "请输入标题";
+AjaxHolder_PostComment_RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+AjaxHolder_PostComment_RequiredFieldValidator1.initialvalue = "";
+var AjaxHolder_PostComment_RequiredFieldValidator2 = document.all ? document.all["AjaxHolder_PostComment_RequiredFieldValidator2"] : document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator2");
+AjaxHolder_PostComment_RequiredFieldValidator2.controltovalidate = "AjaxHolder_PostComment_tbName";
+AjaxHolder_PostComment_RequiredFieldValidator2.errormessage = "请输入你的姓名";
+AjaxHolder_PostComment_RequiredFieldValidator2.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+AjaxHolder_PostComment_RequiredFieldValidator2.initialvalue = "";
+var AjaxHolder_PostComment_Requiredfieldvalidator4 = document.all ? document.all["AjaxHolder_PostComment_Requiredfieldvalidator4"] : document.getElementById("AjaxHolder_PostComment_Requiredfieldvalidator4");
+AjaxHolder_PostComment_Requiredfieldvalidator4.controltovalidate = "AjaxHolder_PostComment_CodeNumberTextBox";
+AjaxHolder_PostComment_Requiredfieldvalidator4.errormessage = "请输入验证码";
+AjaxHolder_PostComment_Requiredfieldvalidator4.display = "Dynamic";
+AjaxHolder_PostComment_Requiredfieldvalidator4.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+AjaxHolder_PostComment_Requiredfieldvalidator4.initialvalue = "";
+var AjaxHolder_PostComment_RequiredFieldValidator3 = document.all ? document.all["AjaxHolder_PostComment_RequiredFieldValidator3"] : document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator3");
+AjaxHolder_PostComment_RequiredFieldValidator3.controltovalidate = "AjaxHolder_PostComment_tbComment";
+AjaxHolder_PostComment_RequiredFieldValidator3.errormessage = "请输入评论内容";
+AjaxHolder_PostComment_RequiredFieldValidator3.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+AjaxHolder_PostComment_RequiredFieldValidator3.initialvalue = "";
+var AjaxHolder_PostComment_ValidationSummary1 = document.all ? document.all["AjaxHolder_PostComment_ValidationSummary1"] : document.getElementById("AjaxHolder_PostComment_ValidationSummary1");
+AjaxHolder_PostComment_ValidationSummary1.showmessagebox = "True";
+AjaxHolder_PostComment_ValidationSummary1.showsummary = "False";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+document.getElementById('AjaxHolder_PostComment_ValidationSummary1').dispose = function() {
+    Array.remove(Page_ValidationSummaries, document.getElementById('AjaxHolder_PostComment_ValidationSummary1'));
+}
+Sys.Application.initialize();
+
+document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator1').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator1'));
+}
+
+document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator2').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator2'));
+}
+
+document.getElementById('AjaxHolder_PostComment_Requiredfieldvalidator4').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('AjaxHolder_PostComment_Requiredfieldvalidator4'));
+}
+
+document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator3').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator3'));
+}
+//]]>
+</script>
+</form>
+    <script type="text/javascript" src="./JTree用法及JTree使用经验总结 - SIMONE - BlogJava_files/ShowHidden.js"></script>
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-476124-3']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+
+
+</body></html>

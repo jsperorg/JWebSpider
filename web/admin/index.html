@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>用户登录</title>
+    <script type="text/javascript" src="../res/jquery1.9.1.min.js"></script>
+    <script type="text/javascript">
+    
+function SetCookie(name,value){
+    var Days = 30; 
+    var exp  = new Date();    
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+}
+function getCookie(name){
+    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+     if(arr != null) return unescape(arr[2]); return null;
+}
+function delCookie(name){
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval=getCookie(name);
+    if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+}
+
+    
+    
+    
+function checkURL(){
+	if(window.parent.location.href.indexOf("pages/")!=-1){
+		window.parent.location.href=window.parent.location.href.replace("pages/main.php","");
+	}
+}
+
+function checkSavePwd(){
+	if(getCookie("adminName") != null){
+		$("#adminName").val(getCookie("adminName"));
+		$("#adminPassword").val(getCookie("adminPassword"));
+		$("#savepwd").attr("checked",true);
+	}
+}
+ 	
+function login(){
+	var adminName = $("#adminName").val();
+	var adminPassword = $("#adminPassword").val();
+	var validate_code = $("#validate_code").val();
+	if(adminName != "" && adminPassword != "" && validate_code != ""){
+	
+		//判断是否让浏览器记住密码
+		if($("#savepwd").attr("checked")==true || $("#savepwd").attr("checked")=="checked"){
+			SetCookie("adminName",adminName);
+			SetCookie("adminPassword",adminPassword);
+		}else{
+			delCookie("adminName");
+			delCookie("adminPassword");
+		}
+		$.ajax({
+			url:"admin_login.php",
+			async:false,
+			data:"admin_name="+adminName+"&admin_password="+adminPassword+"&validate_code="+validate_code,
+			success:function(data){
+				if(data==1)
+					document.location.href="pages/main.php";
+				else
+					alert("用户名或密码或验证码错误！");	
+			}
+		});
+		
+	}else{alert("请输入用户名和密码和验证码！");}
+}
+
+
+
+function change_validate_code(){
+    document.getElementById('validate_code').src = '../validate_code.php?'+Math.random()*10000;
+}
+    </script>
+  </head>
+  
+
+  <body style="background:buttonface;text-align:center;padding-top:100px;" onload="checkURL();$('#adminName').focus();checkSavePwd()">
+    <div style="border:2px outset;width:300px;margin-left:auto;margin-right:auto;text-align:center;">
+	    <br/>
+	    <div style="margin-left:auto;margin-right:auto;text-align:right;width:240px;">
+	    <label for="adminName">用户名：<input type="text" id="adminName" style="width:170px;"/></label><br/>
+	    <label for="adminPassword">密　码：<input type="password" id="adminPassword" style="width:170px;"/></label><br/><br/>
+	    <label for="vlidate_code">验证码：<input type="text" id="validate_code" style="width:50px;"/><img id="validate_code" src="../validate_code.php" alt="看不清楚，换一张" style="cursor: pointer; vertical-align:middle;" onClick="this.src='../validate_code.php?'+Math.random()"/></label><br/><br/>
+		    <input type="checkbox" value="savepwd" id="savepwd"><label for="savepwd" style="font-size:12px;">记住密码</label></input>
+		    <input type="button" value=" 登录 " onClick="login();"/><br/><br/>
+	    </div>
+    </div>
+  </body>
+</html>

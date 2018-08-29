@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+
+html,body{background-color:#eeeeee;font-size:14px;}
+
+.outsidebox{width:800px;height:600px;border:1px outset #ccc;background-color:#dddddd;margin-top:4px;margin-left:9px;}
+.insidebox{width:780px;height:520px;border:1px inset #ccc;background-color:#ffffff;margin-top:4px;margin-left:9px;overflow:auto;}
+
+
+.topbar{width:780px;height:35px;margin-top:4px;margin-left:9px;}
+.tbbg div{float:left;}
+.tbbg input{height:35px;margin-right:4px;}
+
+.bottombar{text-align:right;width:780px;height:20px;margin-top:4px;margin-left:8px;padding-right:0px;}
+.bbbg div{float:left;margin:0px;}
+
+.titlebar{width:780px;height:20px;margin-top:4px;margin-left:9px;}
+
+.datatable{width:100%;border-collapse:collapse;border-spacing:0;cursor:default;}
+.datatable thead tr{background-image:url('../images/table_header.bmp');background-repeat:repeat-x;}
+.datatable thead td{height:26px;border:1px solid #aaaaaa;font-family:宋体;font-size:12px;}
+.datatable tbody tr{background-image:url('../images/table_row.bmp');background-repeat:repeat-x;}
+.datatable tbody td{height:20px;border:1px solid #aaaaaa;font-family:宋体;font-size:12px;}
+
+
+
+
+
+
+
+
+

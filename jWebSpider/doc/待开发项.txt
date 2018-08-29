@@ -1,0 +1,63 @@
+
+java实现执行列表任务时的可暂停和继续的功能。
+
+暂停功能的实现思路：设定一个全局状态变量，当点击暂停按钮，修改该变量的值，以一个新线程执行列表任务，遍历执行到每一个任务时，都判断指令值做出相应处理。
+
+private boolean stop = false; 
+
+btnStart.addActionListener(new ActionListener() { 
+    public void actionPerformed(ActionEvent e) { 
+        new Thread() { 
+            public void run() { 
+                for(int i=0;i<1000;i++) { 
+			//每轮到一个新的游标执行都判断暂停值
+			if(stop){
+				try {
+					System.out.println("已暂停！");
+					i=i-1;
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}else{
+				//处理当前游标业务
+				System.out.println("正在处理第"+i+"个业务……");
+
+			}
+		} 
+            } 
+        }.start(); 
+    } 
+}); 
+
+//创建jButton作为暂停指令按钮，并添加点击事件
+btnStop.addActionListener(new ActionListener() { 
+    public void actionPerformed(ActionEvent e) { 
+        JButton jbt = (JButton)arg0.getSource();
+				if(jbt.getText().equals("暂停")){
+					stop=true;
+					System.out.println("采集暂停中……");
+					jbt.setText("继续");
+				}else{
+					stop=false;
+					System.out.println("采集启动中……");
+					jbt.setText("暂停");
+				}
+			}
+    } 
+}); 
+
+
+suspend
+
+suspend
+
+
+
+修改源功能
+
+JSON数据的Servlet的建立
+
+EditPanel 展示状态信息
+
+Extjs grid 展示抓取的文章的信息

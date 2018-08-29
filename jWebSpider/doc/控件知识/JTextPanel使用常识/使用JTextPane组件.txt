@@ -1,0 +1,89 @@
+9-6:使用JTextPane组件：
+JTextPane的类层次结构图:
+java.lang.Object
+     --java.awt.Component
+      --java.awt.Container
+       --javax.swing.JComponent
+        --javax.swing.text.JTextComponent
+          --javax.swing.JEditorPane
+            --javax.swing.JTextPane
+我们在前面有介绍过JTextArea类，虽然JTextArea在某些功能上已经能够满足我们的需求，但是当我们想再加入更多的变化时 （如文字加入色彩、插入图片...）就会发现JTextArea类根本无法做到。要做到这些功能，我们必须使用JEditorPane的子类： JTextpane。JTextPane提供了许多对文字的处理，如改变颜色、字体缩放、文字风格、加入图片等。我们先来看看JTextPane的构 造方法：
+
+JTextPane构造函数:
+JTextPane():建立一个新的JTextPane.
+JTextPane(StyledDocument doc):以指定的文件模式建立一个新的JTextPane.
+9-6-1:JTextPane的特性:
+相信大家都有用过Word来写过报告或文章，那么你一定会知道我们在Word中可以对文章中的文字做很多的变化，这些变化都是 属于文字的“属性”变化。由于在JTextPane中产生的效果几乎都是由属性的变化而来，所以改变属性的类组件在JTextpane中是少 不了的。因此在介绍如何构造JTextPane之前，我们要先介绍两个在JTextPane中常用到属性类: SimpleAttributeSet和StyleConstant.
+
+属性的变化原本是利用AttributeSet interface来处理的，但是这个interface中包含了太多的方法，若是我们直接实作 AttributeSet interface那就需要实作此interface里所有的方法，这对编写程序来说并不是一个很理想的做法;而java另外提供了 SimpleAttributeSet类，实作了AttributeSet interface.因此，只要我们直接使用SimpleAttributeSet类就能具备AttributeSet interface的所有功能，而不用一个个的编写AttributeSet中的方法。另外StyleConstant类则是提供AttributeSet类许多常用的属 性键值(Attribute Key)和方法来设置或取得JTextPane内容的状态。在StyleConstant类中包含了许多的常用的属性设置，包括本文 与边界空白区段设置、文字字体/大小/类型设置、背景颜色设置等。利用这两个类来辅助设计JTextPane便使JTextPane有更丰富 的内容变化。
+
+JTextPane是专为文字和版面处理设计的组件。JTextPane对可输入区域内容的设计概念是一个类似Word的设计概念,也就是说在 JTextPane中的文字结构是有段落概念的。“段落”的概念就是以[Enter]键为每一段落的分界点，每按一次[Enter]键就增加一个段 落。记得我们在JTextArea中提过的Element存储模式吗？在JTextPane中也是采用相同的做法，但是差别在于规划存储的方式不同。 在JTextArea中并没有分段落，只是单纯的以[Enter]键当作存储成两个Element的分界。而在JTextPane则是以整个编辑区哉为根节 点，每个段落为枝节点 ，每个字符为叶节点来存储文件。也因为JTextPane是采用这样的方式来存储数据，因此在JTextPane中也可 以像Word文件一样将各个段落设置成不同的属性，如第一段为斜体字、字体大小为14号字、粗体字，第二段为斜体字、字体颜色为 蓝色、向左边界缩排2厘米等;另外，我们还可以设置JTextPane编辑区内输入的文字与各个边界间的距离。由这些功能看来，对于一 个TextComponent来说JTextPane是一个具有相当多实用功能的组件。
+
+9-6-2:构造JTextPane组件:
+在了解JTextPane的各项特性之后，我们现在马上来看JTextPane可以呈现什么样的效果，在下面这个例子中我们将对JTextPane 区域内的文字设置颜色、粗斜体、与底线等相关属性。
+
+import javax.swing.*;
+      import javax.swing.text.*;
+      import java.awt.event.*;
+      import java.awt.*;
+      
+      public class JTextPane1{
+      private JTextPane textPane;
+      
+      public JTextPane1(){
+      textPane=new JTextPane();
+      textPane.setBackground(Color.black);
+      textPane.setEditable(false); 
+      }
+      public void setYellow_Bold_20(String str){
+      SimpleAttributeSet attrset=new SimpleAttributeSet();
+      StyleConstants.setForeground(attrset,Color.yellow);
+      StyleConstants.setBold(attrset,true);
+      insert(str,attrset); 
+      }
+      public void setBlue_Italic_Bold_22(String str){
+      SimpleAttributeSet attrset=new SimpleAttributeSet();
+      StyleConstants.setForeground(attrset,Color.blue);
+      StyleConstants.setItalic(attrset,true);
+      StyleConstants.setFontSize(attrset,24);
+      insert(str,attrset); 
+      }
+      public void setRed_UnderLine_Italic_24(String str){
+      SimpleAttributeSet attrset=new SimpleAttributeSet();
+      StyleConstants.setForeground(attrset,Color.red);
+      StyleConstants.setUnderline(attrset,true);
+      StyleConstants.setItalic(attrset,true);
+      StyleConstants.setFontSize(attrset,24);
+      insert(str,attrset); 
+      }
+      //这个方法最主要的用途是将字符串插入到JTextPane中。
+      public void insert(String str,AttributeSet attrset){
+      Document docs=textPane.getDocument();//利用getDocument()方法取得JTextPane的Document instance.0
+      str=str+"\n";
+      try{
+      docs.insertString(docs.getLength(),str,attrset);      
+      }catch(BadLocationException ble){
+      System.out.println("BadLocationException:"+ble); 
+      } 
+      }
+      public Component getComponent(){
+      return textPane; 
+      }
+      public static void main(String[] args){
+      JTextPane1 pane=new JTextPane1();
+      pane.setYellow_Bold_20("This is Line 1,yellow,Bold,Size 20");
+      pane.setBlue_Italic_Bold_22("This is Line 2,blue,Italic,Bold,Size 22");
+      pane.setRed_UnderLine_Italic_24("This is Line 3,red,UnderLine,Italic,Size 24");
+      
+      JFrame f=new JFrame("JTextPane1");
+      f.getContentPane().add(pane.getComponent());
+      f.setSize(450,180);
+      f.show();
+      f.addWindowListener(new WindowAdapter(){
+      public void windowClosing(WindowEvent e){
+      System.exit(0); 
+      }
+      });
+      }
+      }
+若你想在JTextPane上置入图形或其他组件(如表格或按钮)，你可以分别使用JTextPane所提供的insetIcon()与insertComponent() 方法来达到这个效果。 至于另外一种JTextPane的构造方式和JTextArea一样，差别在于JTextArea是采用Document interface.

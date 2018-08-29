@@ -1,0 +1,20 @@
+
+新建抓取：
+
+抓取配置要填写以下字段
+
+标识（名称）
+
+url
+
+抓取类型：超链接,文字内容，图片
+
+title_begin 开始特征, title_end 结束特征
+
+content_begin 开始特征,content_end 结束特征
+
+replace 替换项
+
+抓取后：
+web端提供发布url或者webservice接口,要求传入参数：title,content,url,验证码（客户端传递的验证码必须和服务端的验证码一致，用于证明发布者身份防止外人发布攻击）
+
