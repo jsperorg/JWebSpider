@@ -1,5 +1,6 @@
 # JWebSpider
 A simple web spider based on the Java. Contains a Spider Client and PHP website.
+抓取器的核心代码写于2010年，基于jdk1.6。
 
 JWebSpider是一个网站内容抓取器，基于java语言，抓取器是一个用java swing开发的桌面应用。   
 本源码包含一个抓取器，一个php+MySQL的配套web程序。  
